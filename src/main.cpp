@@ -23,10 +23,6 @@ int main() {
 	accInit(acc);
 	lm75b.open();
 	while (true) {
-	  led1 = 1;
-	  wait(0.5);
-	  led1 = 0;
-	  wait(0.5);
 		potVal = pot.read();
 		tempVal = lm75b.temp();
 		acc.read(accVal[0], accVal[1], accVal[2]);
@@ -36,6 +32,8 @@ int main() {
 		d->printf("Temp : %03.1f\n", tempVal);
 		d->setCursor(2,22);
 		d->printf("Acc  : %05d, %05d, %05d\n", accVal[0], accVal[1], accVal[2]); 
+		led1 = !led1;
+		wait(0.5);
 	}
 }
 
